@@ -9,10 +9,18 @@ import hello.core.member.MemoryMemberRepository;
 public class OrderServiceImpl implements OrderService{
 
     //MemberRepository에서 회원 찾아야함 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    
+    private final MemberRepository memberRepository;
     //DiscountPolicy 필요함
-    private DiscountPolicy discountPolicy; //추상화한 인터페이스만 의존 : DIP 만족
+    private final DiscountPolicy discountPolicy; //추상화한 인터페이스만 의존 : DIP 만족
+
+    //final로 되어있으면 무조건 기본으로 할당하든 생성자를 통해 할당하든 해야함.
+
+    //생성자
+    //생성자에서는 인터페이스를 통해 구현체가 뭐가 들어올지 알 수 없음. 그냥 구현하는 것임
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
 
 
