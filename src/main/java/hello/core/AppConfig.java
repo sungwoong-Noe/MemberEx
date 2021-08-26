@@ -13,6 +13,7 @@ public class AppConfig {
     //
     public MemberService memberService(){
         return new MemberServiceImpl(new MemoryMemberRepository());
+        //memberService를 호출하면 new MemberServiceImpl을 생성하면서 MemoryMemberRepository의 구현체를 주입시켜준다.
     }
 
     //누군가 OrderService를 조회하면 OrderServiceImpl이 반환이 되는데 거기에는 MemoryMemberRepository와 FixDiscountPolicy가 들어감
