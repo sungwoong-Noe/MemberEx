@@ -18,9 +18,9 @@ public class AppConfig {
         //memberService를 호출하면 new MemberServiceImpl을 생성하면서 MemoryMemberRepository의 구현체를 주입시켜준다.
     }
 
-    //MemberRepository 역할
+    //구현 클래스
     private MemoryMemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+        return new MemoryMemberRepository();    //회원 저장은 메모리 방식을 쓸거야.
     }
 
 
@@ -29,6 +29,7 @@ public class AppConfig {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    //할인정책 구현 클래스
     public DiscountPolicy discountPolicy(){
         return new FixDiscountPolicy(); //할인정책을 fixDiscountPolicy 쓸거야.
     }
